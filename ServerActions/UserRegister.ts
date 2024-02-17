@@ -3,11 +3,8 @@
 import { MongoClient } from "mongodb";
 import { FormEvent } from "react";
 
-export async function registerNewUser(formData: FormData) {
+export async function registerNewUser(username: string, password: string) {
   try {
-    const username = formData.get("username") as string;
-    const password = formData.get("password") as string;
-
     const client = new MongoClient(process.env.MONGODB_URI as string);
     await client.connect();
 
