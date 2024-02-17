@@ -11,6 +11,12 @@ export default function Home() {
       >
         Register
       </Link>
+      <Link
+        href="/recipe"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Recipe
+      </Link>
     </>
   );
 }

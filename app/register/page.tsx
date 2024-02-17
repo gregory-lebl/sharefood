@@ -1,29 +1,20 @@
 "use client";
 
 import React from "react";
-import { MongoClient } from "mongodb";
 import { registerNewUser } from "@/ServerActions/UserRegister";
 import { useForm, SubmitHandler } from "react-hook-form";
-
-type Inputs = {
-  username: string;
-  password: string;
-};
+import { registerInputType } from "@/types/ReactHookForm/register";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<registerInputType>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    registerNewUser(data.username, data.password);
+  const onSubmit: SubmitHandler<registerInputType> = async (data) => {
+    await registerNewUser(data.username, data.password);
   };
-
-  console.log(watch("username")); // watch input value by passing the name of it
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
